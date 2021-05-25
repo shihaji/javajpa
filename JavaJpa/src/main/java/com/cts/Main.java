@@ -21,16 +21,39 @@ public class Main {
 		
 		transaction.begin();
 		
-		Student st=em.find(Student.class,1);
+		Student st=new Student();
+		
+		st.setName("abc");
+		
+		Student st1=new Student();
+		
+		st1.setName("def");
+		
+		Subject sub=new Subject();
+		
+		sub.setName("java");
+		
+		Subject sub1=new Subject();
+		
+		sub1.setName("mysql");
+		
+		st1.setSubjectList(Arrays.asList(sub));
+		
+		st.setSubjectList(Arrays.asList(sub,sub1));
+		
+		sub.setStudentList(Arrays.asList(st,st1));
+		
+		sub1.setStudentList(Arrays.asList(st));
+	 
+	     em.persist(st);
+	     em.persist(st1);
+	     
 	    
-	   System.out.println(st.getName());
-	   
-	
 		
 		transaction.commit();
 		em.close();  
 		
-		   System.out.println(st.getSubjectList());
+		 
 		
 	}
 

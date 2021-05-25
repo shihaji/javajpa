@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -21,7 +22,7 @@ public class Student {
 	
 	private String name;
 	
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "student",fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "studentList")
    	private List<Subject> subjectList;
 	
 	
